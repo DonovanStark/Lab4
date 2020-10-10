@@ -12,6 +12,7 @@ row2 = [dark_square, dark_square, dark_square, dark_square, dark_square]
 row3 = [dark_square, dark_square, dark_square, dark_square, dark_square]
 row4 = [dark_square, dark_square, dark_square, dark_square, dark_square]
 grid = [row0, row1, row2, row3, row4]
+blank_grid = grid
 
 
 # randomize the board
@@ -183,9 +184,15 @@ def update_grid(inpt, grid):
     return grid
 
 
-for _ in range(100):
-    inpt = make_init_board()
-    grid = update_grid(inpt, grid)
+p = 1
+while p == 1:
+    for _ in range(100):
+        inpt = make_init_board()
+        grid = update_grid(inpt, grid)
+    if grid == blank_grid:
+        p = 0
+    else:
+        p = 1
 
 
 def check_grid(grid):
