@@ -179,7 +179,7 @@ def update_grid(inpt,grid):
         
         return grid
     
-print(grid)
+
 for _ in range(100):
     inpt = make_init_board()
     grid = update_grid(inpt,grid)
