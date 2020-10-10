@@ -3,64 +3,20 @@ import random
 light_square = u'\u25A0'
 dark_square = u'\u25A1'
 alphabet = "abcdefghijklmnopqrstuvwxy"
-print(light_square)
-def Generate_Game():
-    row0 = []
-    row1 = []
-    row2 = []
-    row3 = []
-    row4 = []
-    for i in range(5):
-        slot = random.randint(0,1)
-        if slot == 1:
-            slot = light_square            
-            row0 += [slot]
-        else:
-            slot = dark_square
-            row0 += [slot]
-    for i in range(5):
-        slot = random.randint(0,1)
-        if slot == 1:
-            slot = light_square            
-            row1 += [slot]
-        else:
-            slot = dark_square
-            row1 += [slot]
-        
-    for i in range(5):
-        slot = random.randint(0,1)
-        if slot == 1:
-            slot = light_square            
-            row2 += [slot]
-        else:
-            slot = dark_square
-            row2 += [slot]
+print("In order to win remove all:'\u25A0'")
 
-
-    for i in range(5):
-        slot = random.randint(0,1)
-        if slot == 1:
-            slot = light_square            
-            row3 += [slot]
-        else:
-            slot = dark_square
-            row3 += [slot]
+row0 = [dark_square,dark_square,dark_square,dark_square,dark_square]
+row1 = [dark_square,dark_square,dark_square,dark_square,dark_square]
+row2 = [dark_square,dark_square,dark_square,dark_square,dark_square]
+row3 = [dark_square,dark_square,dark_square,dark_square,dark_square]
+row4 = [dark_square,dark_square,dark_square,dark_square,dark_square]
+grid = [row0,row1,row2,row3,row4]
     
-    for i in range(5):
-        slot = random.randint(0,1)
-        if slot == 1:
-            slot = light_square            
-            row4 += [slot]
-        else:
-            slot = dark_square
-            row4 += [slot]
-
-
-    grid = [row0,row1,row2,row3,row4]
-    return grid 
-
-grid = Generate_Game()
-
+def make_init_board():
+    row = random.randint(0,4)
+    column = random.randint(0,4)
+    inpt = [row,column]
+    return inpt
 def play_game():
     inpt_row = int(input("Select ROW(0-4): "))
     inpt_column = int(input("Select COLUMN(0-4): "))
@@ -70,7 +26,6 @@ def play_game():
 def update_grid(inpt,grid):
         row = inpt[0]
         column = inpt[1]
-        print(row,column)
         if grid[row][column] == dark_square:
             grid[row][column] = light_square
         else:
@@ -224,8 +179,10 @@ def update_grid(inpt,grid):
         
         return grid
     
-
-
+print(grid)
+for _ in range(100):
+    inpt = make_init_board()
+    grid = update_grid(inpt,grid)
 
 
 
@@ -250,23 +207,22 @@ def check_grid(grid):
             return 1
     return 0
 
-def solvable(grid):
-    pass
-
-
-solvable(grid)
-
-def solve_bot():
-    row = random.randint(0,4)
-    column = random.randint(0,4)
-    inpt = [row,column]
-    return inpt
 s = 1
 while s == 1:
     for i in range(5):
         print(grid[i])
     
-    inpt = solve_bot()
+    inpt = play_game()
     grid = update_grid(inpt,grid)
-    s = check_grid(grid)
-
+    gg = check_grid(grid)
+    if gg == 0:
+        print("Congratulations!")
+        a = input("Would you like to play again?(y/n): ").lower()
+        if a == "y" or a == "yes":
+            for _ in range(100):
+                inpt = make_init_board()
+                grid = update_grid(inpt,grid)
+            s = 1
+        else: 
+            s = 0
+    
