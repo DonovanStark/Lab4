@@ -26,6 +26,7 @@ def play_game():
     inpt = [inpt_row,inpt_column]
     return inpt
 
+#change grid when row and columnn are selected
 def update_grid(inpt,grid):
         row = inpt[0]
         column = inpt[1]
