@@ -5,18 +5,21 @@ dark_square = u'\u25A1'
 alphabet = "abcdefghijklmnopqrstuvwxy"
 print("In order to win remove all:'\u25A0'")
 
+#represent the board as a list of lists
 row0 = [dark_square,dark_square,dark_square,dark_square,dark_square]
 row1 = [dark_square,dark_square,dark_square,dark_square,dark_square]
 row2 = [dark_square,dark_square,dark_square,dark_square,dark_square]
 row3 = [dark_square,dark_square,dark_square,dark_square,dark_square]
 row4 = [dark_square,dark_square,dark_square,dark_square,dark_square]
 grid = [row0,row1,row2,row3,row4]
-    
+
+#randomize the board
 def make_init_board():
     row = random.randint(0,4)
     column = random.randint(0,4)
     inpt = [row,column]
     return inpt
+#prompt the user to select rows and columns
 def play_game():
     inpt_row = int(input("Select ROW(0-4): "))
     inpt_column = int(input("Select COLUMN(0-4): "))
@@ -225,4 +228,3 @@ while s == 1:
             s = 1
         else: 
             s = 0
-    
