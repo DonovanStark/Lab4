@@ -217,14 +217,16 @@ def check_grid(grid):
     return 0
 
 
+moves = 0
 s = 1
 while s == 1:
     for i in range(5):
         print(grid[i])
-
+    print("Moves:" + str(moves))
     inpt = play_game()
     grid = update_grid(inpt, grid)
     gg = check_grid(grid)
+    moves += 1
     if gg == 0:
         print("Congratulations!")
         a = input("Would you like to play again?(y/n): ").lower()
