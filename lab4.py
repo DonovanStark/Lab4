@@ -228,12 +228,13 @@ while s == 1:
     gg = check_grid(grid)
     moves += 1
     if gg == 0:
-        print("Congratulations!")
+        print("Congratulations!You won in "+str(moves)+" moves.")
         a = input("Would you like to play again?(y/n): ").lower()
         if a == "y" or a == "yes":
             for _ in range(100):
                 inpt = make_init_board()
                 grid = update_grid(inpt, grid)
+            moves = 0
             s = 1
         else:
             s = 0
