@@ -25,9 +25,25 @@ def make_init_board():
 
 # prompt the user to select rows and columns
 def play_game():
-    inpt_row = int(input("Select ROW(0-4): "))
-    inpt_column = int(input("Select COLUMN(0-4): "))
-    inpt = [inpt_row, inpt_column]
+    j = 1
+# While loop checks user input to make sure it is an int 0-4
+# If user input is not 0-4 asks again
+    while j == 1:
+        counter1 = 0
+        counter2 = 0
+        inpt_row = input("Select ROW(0-4): ")
+        inpt_column = input("Select COLUMN(0-4): ")
+        for i in range(5):
+            if inpt_row != str(i):
+                counter1 += 1
+            if inpt_column != str(i):
+                counter2 += 1
+        if counter1 < 5 and counter2 < 5:
+            j = 0
+        else:
+            j = 1
+            print("Row and Column must be integer 0-4")
+    inpt = [int(inpt_row), int(inpt_column)]
     return inpt
 
 
